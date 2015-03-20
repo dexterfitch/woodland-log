@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: woodland_log_development
+
+test:
+  <<: *default
+  database: woodland_log_test
+
+production:
+  <<: *default
+  database: woodland_log_production
+  username: woodland_log
+  password: <%= ENV['WOODLAND_LOG_DATABASE_PASSWORD'] %>

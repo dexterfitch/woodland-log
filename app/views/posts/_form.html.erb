@@ -1,0 +1,24 @@
+<%= render "layouts/errors", :object => @post %>
+
+<%= form_for [@user, @post], :html => { :multipart => true} do |f| %>
+  <ul class="formList list-unstyled">
+    <li>
+      <%= f.label :title %><br>
+      <%= f.text_field :title, :size => "61" %>
+    </li>
+
+    <li>
+      <%= f.label :body %><br>
+      <%= f.text_area :body, :cols => "60", :rows => "10" %>
+    </li>
+
+    <li>
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+    </li>
+
+    <li class="submit">
+      <%= f.submit "Submit", :class => "btn btn-sm btn-success" %>
+    </li>
+  </ul>
+<% end %>
