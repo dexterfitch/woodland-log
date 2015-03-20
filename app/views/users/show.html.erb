@@ -39,11 +39,22 @@
                 <%= link_to user_post_path(@user, post), :data => {:confirm => "Do you really want to delete this post?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Post<% end %>
               </p>
             </small>
+            <hr>
             <p><%= link_to new_user_post_comment_path(current_user, post), :class => "btn btn-sm btn-primary" do %>Add Comment<% end %></p>
             <% if post.comments.any? %>
-              <hr>
               <% post.comments.by_date.each do |comment| %>
-                <div class="well"><%= comment.body %></div>
+                <div class="well">
+                  <b><%= @user.name %> says:</b><br>
+                  <!-- The line above isn't right and needs to be fixed. -->
+                  <span class="comment"><%= comment.body %></span><br>
+                  <small>
+                    <p class="right">
+                      <%= comment.created_at.to_formatted_s(:long_ordinal) %> |
+                      <%= link_to edit_user_post_comment_path(@user, post, comment) do %><i class="fa fa-cog"></i> Edit Comment<% end %> |
+                      <%= link_to user_post_comment_path(@user, post, comment), :data => {:confirm => "Do you really want to delete this comment?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Comment<% end %>
+                    </p>
+                  </small>
+                </div>
               <% end %>
             <% else %>
               <p>No comments, yet!</p>
