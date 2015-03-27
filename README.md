@@ -5,7 +5,9 @@ A rails app for woodland creatures to blog about their busy days.
 
 ##Setup
 
-This app requires Ruby, Rails, and ImageMagick to run.
+See this project at: https://woodland-logger.herokuapp.com/
+
+Otherwise, this app requires Ruby, Rails, and ImageMagick to run locally.
 
 Download project folder.
 
