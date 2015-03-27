@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, :presence => true
   validates_uniqueness_of :email
 
-  has_attached_file :avatar, :styles => { :medium => "250x250>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "250x250>", :thumb => "100x100>" }, :default_url => "missing_image.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   def encrypt_password

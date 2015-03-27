@@ -8,9 +8,11 @@
       <h4><%= @user.email %></h4>
       <small>Member since: <%= @user.created_at.to_formatted_s(:long_ordinal) %></small>
     </div>
-    <div class="row" id="new-post">
-      <p><%= link_to new_post_path(current_user), :class => "btn btn-sm btn-success" do %><i class="fa fa-pencil"></i> New Post<% end %></p>
-    </div>
+    <% if @user == current_user %>
+      <div class="row" id="new-post">
+        <p><%= link_to new_post_path(current_user), :class => "btn btn-sm btn-success" do %><i class="fa fa-pencil"></i> New Post<% end %></p>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -30,10 +32,12 @@
             </h4>
           </div>
           <div class="col-md-2 text-right">
-            <p>
-              <%= link_to edit_post_path(post) do %><i class="fa fa-cog"></i> Edit Post<% end %><br>
-              <%= link_to post_path(post), :data => {:confirm => "Do you really want to delete this post?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Post<% end %>
-            </p>
+            <% if @user == current_user %>
+              <p>
+                <%= link_to edit_post_path(post) do %><i class="fa fa-cog"></i> Edit Post<% end %><br>
+                <%= link_to post_path(post), :data => {:confirm => "Do you really want to delete this post?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Post<% end %>
+              </p>
+            <% end %>
           </div>
           <div class="col-md-8 col-md-offset-2">
             <hr>
@@ -47,9 +51,11 @@
 <div class="row">
   <div class="col-md-12 text-center">
     <p>
-      <%= link_to "Return Home", users_path %> |
-      <%= link_to edit_user_path(@user) do %><i class="fa fa-cog"></i> Edit Profile<% end %> |
-      <%= link_to user_path(@user), :data => {:confirm => "Do you really want to delete your profile?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Profile<% end %>
+      <%= link_to "Return Home", users_path %>
+      <% if @user == current_user %>
+        | <%= link_to edit_user_path(@user) do %><i class="fa fa-cog"></i> Edit Profile<% end %> |
+        <%= link_to user_path(@user), :data => {:confirm => "Do you really want to delete your profile?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Profile<% end %>
+      <% end %>
     </p>
   </div>
 </div>

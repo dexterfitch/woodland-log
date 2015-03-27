@@ -19,13 +19,13 @@
   </small>
   <hr>
 
-  <p class="text-center">
+  <h4 class="text-center">
     <% if !current_user %>
       Login to join the conversation
     <% else %>
       <%= link_to new_post_comment_path(@post), :class => "btn btn-sm btn-primary" do %>Add Comment<% end %>
     <% end %>
-  </p>
+  </h4>
 
   <% if @post.comments.any? %>
     <% @post.comments.by_date.each do |comment| %>
