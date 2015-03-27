@@ -27,7 +27,7 @@ Model and integration testing can be done via rspec in the terminal.
 
 ##Known Bugs
 
-Comments do not display the user name of the commenter.
+None at this time.
 
 ##Motivation
 
