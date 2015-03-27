@@ -9,7 +9,7 @@
       <small>Member since: <%= @user.created_at.to_formatted_s(:long_ordinal) %></small>
     </div>
     <div class="row" id="new-post">
-      <p><%= link_to new_user_post_path(current_user), :class => "btn btn-sm btn-success" do %><i class="fa fa-pencil"></i> New Post<% end %></p>
+      <p><%= link_to new_post_path(current_user), :class => "btn btn-sm btn-success" do %><i class="fa fa-pencil"></i> New Post<% end %></p>
     </div>
   </div>
 </div>
@@ -18,66 +18,34 @@
   <div class="col-md-12">
     <% if @user.posts.any? %>
       <hr>
+      <h2>Posts</h2>
       <% @user.posts.by_date.each do |post| %>
         <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-8">
+          <div class="col-md-6 col-md-offset-2">
             <h4>
-              <%= post.title %><br>
+              <%= link_to post_path(post) do %><%= post.title %><% end %><br>
               <small>
                 <%= post.created_at.to_formatted_s(:long_ordinal) %>
               </small>
             </h4>
-            <span class="center">
-              <p><%= link_to (image_tag post.image.url(:large)), post.image.url %></p>
-            </span>
-            <p><%= post.body %></p>
-            <small>
-              <p class="right">
-                <%= link_to edit_user_post_path(@user, post) do %><i class="fa fa-cog"></i> Edit Post<% end %> |
-                <%= link_to user_post_path(@user, post), :data => {:confirm => "Do you really want to delete this post?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Post<% end %>
-              </p>
-            </small>
-            <hr>
-            <p><%= link_to new_user_post_comment_path(current_user, post), :class => "btn btn-sm btn-primary" do %>Add Comment<% end %></p>
-            <% if post.comments.any? %>
-              <% post.comments.by_date.each do |comment| %>
-                <div class="well">
-                  <b><%= @user.name %> says:</b><br>
-                  <!-- The line above isn't right and needs to be fixed. -->
-                  <span class="comment"><%= comment.body %></span><br>
-                  <small>
-                    <p class="right">
-                      <%= comment.created_at.to_formatted_s(:long_ordinal) %> |
-                      <%= link_to edit_user_post_comment_path(@user, post, comment) do %><i class="fa fa-cog"></i> Edit Comment<% end %> |
-                      <%= link_to user_post_comment_path(@user, post, comment), :data => {:confirm => "Do you really want to delete this comment?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Comment<% end %>
-                    </p>
-                  </small>
-                </div>
-              <% end %>
-            <% else %>
-              <p>No comments, yet!</p>
-            <% end %>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 text-right">
+            <p>
+              <%= link_to edit_post_path(post) do %><i class="fa fa-cog"></i> Edit Post<% end %><br>
+              <%= link_to post_path(post), :data => {:confirm => "Do you really want to delete this post?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Post<% end %>
+            </p>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <hr>
           </div>
         </div>
       <% end %>
-    <% else %>
-      <div class="row">
-        <div class="col-md-12">
-          <hr>
-          <p>No posts yet!</p>
-        </div>
-      </div>
     <% end %>
-    <hr>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-12 center">
+  <div class="col-md-12 text-center">
     <p>
       <%= link_to "Return Home", users_path %> |
       <%= link_to edit_user_path(@user) do %><i class="fa fa-cog"></i> Edit Profile<% end %> |

@@ -1,0 +1,48 @@
+<div class="col-md-8 col-md-offset-2">
+  <h3>
+    <%= @post.title %><br>
+    <small>
+      Posted by <%= link_to user_path(@post.user) do%><%= @post.user.name %><% end %> on <%= @post.created_at.to_formatted_s(:long_ordinal) %>
+    </small>
+  </h3>
+  <hr>
+  <span class="text-center">
+    <p><%= link_to (image_tag @post.image.url(:large)), @post.image.url %></p>
+  </span>
+  <hr>
+  <p><%= @post.body %></p>
+  <small>
+    <p class="text-right">
+      <%= link_to edit_post_path(@post) do %><i class="fa fa-cog"></i> Edit Post<% end %> |
+      <%= link_to post_path(@post), :data => {:confirm => "Do you really want to delete this post?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Post<% end %>
+    </p>
+  </small>
+  <hr>
+
+  <p class="text-center">
+    <% if !current_user %>
+      Login to join the conversation
+    <% else %>
+      <%= link_to new_post_comment_path(@post), :class => "btn btn-sm btn-primary" do %>Add Comment<% end %>
+    <% end %>
+  </p>
+
+  <% if @post.comments.any? %>
+    <% @post.comments.by_date.each do |comment| %>
+      <div class="well">
+        <b><%= link_to user_path(comment.user) do %><%= comment.user.name %><% end %> says:</b><br>
+        <!-- The line above isn't right and needs to be fixed. -->
+        <span class="comment"><%= comment.body %></span><br>
+        <small>
+          <p class="text-right">
+            <%= comment.created_at.to_formatted_s(:long_ordinal) %> |
+            <%= link_to edit_post_comment_path(@post, comment) do %><i class="fa fa-cog"></i> Edit Comment<% end %> |
+            <%= link_to post_comment_path(@post, comment), :data => {:confirm => "Do you really want to delete this comment?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Comment<% end %>
+          </p>
+        </small>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="well">No comments, yet!</p>
+  <% end %>
+</div>
