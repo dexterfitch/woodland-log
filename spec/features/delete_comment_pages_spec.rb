@@ -20,8 +20,13 @@ describe "the delete comment function" do
     fill_in "Body", :with => "You have no idea."
     attach_file('Image', 'public/test/fab.png')
     click_on "Submit"
-    click_on "Delete Post"
-    expect(page).to have_content "deleted!"
+    click_on "Surgery is Hard with Hooves"
+    # save_and_open_page
+    click_on "Add Comment"
+    fill_in "Body", :with => "/tiny violin"
+    click_on "Submit"
+    click_on "Delete Comment"
+    expect(page).to have_content "deleted"
   end
 
 end
