@@ -6,12 +6,23 @@ ul {
   margin-left: 2em;
 }
 
+.height {
+  height: 100px;
+}
+
 .inline {
   display: inline-block;
 }
 
 .submit {
   margin-top: 2em;
+}
+
+.user-tile {
+  background: #EEE;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em;
 }
 
 #new-post {

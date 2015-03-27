@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "250x250>", :thumb => "100x100>" }, :default_url => "missing_image.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  scope :by_date, -> { order(created_at: :desc) }
+
   def encrypt_password
     self.password_salt = BCrypt::Engine.generate_salt
     self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)

@@ -1,8 +1,21 @@
-<h3>Top contributors this week:</h3>
 <% if @users.any? %>
-  <ul class="list-unstyled">
-    <% @users.each do |user| %>
-      <li><i class="fa fa-star"></i> <%= link_to user_path(user) do %><%= user.name %><% end %></li>
-    <% end %>
-  </ul>
+  <h3>Loggers:</h3>
+
+  <div class="col-md-8 col-md-offset-2"
+    <div class="row">
+      <% @users.by_date.each do |user| %>
+        <div class="col-md-3 text-center user-tile">
+          <%= link_to user_path(user) do %>
+            <div class="row height">
+              <%= image_tag user.avatar.url(:thumb) %>
+            </div>
+            <div class="row">
+              <%= user.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <!-- </div> -->
+
 <% end %>
