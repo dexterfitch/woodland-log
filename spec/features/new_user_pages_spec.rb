@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe "the create user function" do
   it "opens the new user page" do
-    visit "/"
+    visit root_path
     click_on "Register"
     expect(page).to have_content "Name"
   end
 
   it "creates a new user" do
-    visit "/"
+    visit root_path
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
@@ -20,7 +20,7 @@ describe "the create user function" do
   end
 
   it "throws an error when no name is entered" do
-    visit "/"
+    visit root_path
     click_on "Register"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
     fill_in "Password", :with => "gumdrop123"
@@ -31,7 +31,7 @@ describe "the create user function" do
   end
 
   it "throws an error when no email is entered" do
-    visit "/"
+    visit root_path
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Password", :with => "gumdrop123"
@@ -42,7 +42,7 @@ describe "the create user function" do
   end
 
   it "throws an error when no password is entered" do
-    visit "/"
+    visit root_path
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
@@ -53,7 +53,7 @@ describe "the create user function" do
   end
 
   it "throws an error when no password confirmation is entered" do
-    visit "/"
+    visit root_path
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
