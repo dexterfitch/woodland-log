@@ -23,26 +23,16 @@
     <% if !current_user %>
       Login to join the conversation
     <% else %>
-      <%= link_to new_post_comment_path(@post), :class => "btn btn-sm btn-primary" do %>Add Comment<% end %>
+      <%= link_to new_post_comment_path(@post), remote: true, id: "new_comment_button", :class => "btn btn-sm btn-primary" do %><i class="fa fa-comments-o"></i> Add Comment<% end %>
     <% end %>
   </h4>
 
   <% if @post.comments.any? %>
-    <% @post.comments.by_date.each do |comment| %>
-      <div class="well">
-        <b><%= link_to user_path(comment.user) do %><%= comment.user.name %><% end %> says:</b><br>
-        <!-- The line above isn't right and needs to be fixed. -->
-        <span class="comment"><%= comment.body %></span><br>
-        <small>
-          <p class="text-right">
-            <%= comment.created_at.to_formatted_s(:long_ordinal) %> |
-            <%= link_to edit_post_comment_path(@post, comment) do %><i class="fa fa-cog"></i> Edit Comment<% end %> |
-            <%= link_to post_comment_path(@post, comment), :data => {:confirm => "Do you really want to delete this comment?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Comment<% end %>
-          </p>
-        </small>
-      </div>
-    <% end %>
-  <% else %>
-    <p class="well">No comments, yet!</p>
-  <% end %>
+     <div id="comments">
+       <%= render @comments %>
+     </div>
+   <% else %>
+     <h2 id="no_comments">No comments, yet!</h2>
+     <div id="comments"></div>
+   <% end %>
 </div>

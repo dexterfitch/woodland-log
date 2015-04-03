@@ -13,7 +13,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form'
+gem 'font-awesome-sass'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'responders'
 
 group :development do
   gem 'byebug'
@@ -24,14 +26,15 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'pry'
-  gem 'launchy'
-  # save_and_open_page - triggers launchy. Insert before expect/should line in capybara spec methods.
 end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'pry'
+  gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :production do

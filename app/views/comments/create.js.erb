@@ -1,0 +1,4 @@
+$('#new_comment').remove();
+$('#new_comment_button').show();
+$('#no_comments').hide();
+$('#comments').prepend('<%= j render(@comment) %>');

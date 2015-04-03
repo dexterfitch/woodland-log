@@ -1,6 +1,6 @@
 <%= render "layouts/errors", :object => @comment %>
 
-<%= form_for [@user, @post, @comment], :html => { :multipart => true} do |f| %>
+<%= form_for [@user, @post, @comment], remote:true do |f| %>
   <ul class="formList list-unstyled">
 
     <li>

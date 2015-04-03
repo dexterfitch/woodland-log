@@ -1,0 +1,11 @@
+<div class="well">
+  <b><%= link_to user_path(comment.user) do %><%= comment.user.name %><% end %> says:</b><br>
+  <span class="comment"><%= comment.body %></span><br>
+  <small>
+    <p class="text-right">
+      <%= comment.created_at.to_formatted_s(:long_ordinal) %><% if comment.user == current_user %> |
+      <%= link_to edit_post_comment_path(@post, comment) do %><i class="fa fa-cog"></i> Edit Comment<% end %> |
+      <%= link_to post_comment_path(@post, comment), :data => {:confirm => "Do you really want to delete this comment?", :method => "delete"} do %><i class="fa fa-trash-o"></i> Delete Comment<% end %><% end %>
+    </p>
+  </small>
+</div>
