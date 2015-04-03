@@ -14,6 +14,7 @@ describe "the edit user function" do
     click_on "Edit Profile"
     fill_in "Name", :with => "Doc Pop"
     fill_in "Email", :with => "doc_pop@mystical.com"
+    fill_in "Number", :with => "0234567891"
     fill_in "Password", :with => "pixiestix314"
     fill_in "Password confirmation", :with => "pixiestix314"
     attach_file('Avatar', 'public/test/fab.png')
@@ -27,6 +28,7 @@ describe "the edit user function" do
     click_on "Edit Profile"
     fill_in "Name", :with => ""
     fill_in "Email", :with => "doc_pop@mystical.com"
+    fill_in "Number", :with => "0234567891"
     fill_in "Password", :with => "pixiestix314"
     fill_in "Password confirmation", :with => "pixiestix314"
     attach_file('Avatar', 'public/test/fab.png')
@@ -40,6 +42,21 @@ describe "the edit user function" do
     click_on "Edit Profile"
     fill_in "Name", :with => "Doc Pop"
     fill_in "Email", :with => ""
+    fill_in "Number", :with => "0234567891"
+    fill_in "Password", :with => "pixiestix314"
+    fill_in "Password confirmation", :with => "pixiestix314"
+    attach_file('Avatar', 'public/test/fab.png')
+    click_on "Submit"
+    expect(page).to have_content "blank"
+  end
+
+  it "throws an error when no user number is entered" do
+    user = FactoryGirl.create(:user)
+    sign_in(user)
+    click_on "Edit Profile"
+    fill_in "Name", :with => "Doc Pop"
+    fill_in "Email", :with => "doc_pop@mystical.com"
+    fill_in "Number", :with => ""
     fill_in "Password", :with => "pixiestix314"
     fill_in "Password confirmation", :with => "pixiestix314"
     attach_file('Avatar', 'public/test/fab.png')
@@ -53,6 +70,7 @@ describe "the edit user function" do
     click_on "Edit Profile"
     fill_in "Name", :with => "Doc Pop"
     fill_in "Email", :with => "doc_pop@mystical.com"
+    fill_in "Number", :with => "0234567891"
     fill_in "Password", :with => ""
     fill_in "Password confirmation", :with => "pixiestix314"
     attach_file('Avatar', 'public/test/fab.png')
@@ -66,6 +84,7 @@ describe "the edit user function" do
     click_on "Edit Profile"
     fill_in "Name", :with => "Doc Pop"
     fill_in "Email", :with => "doc_pop@mystical.com"
+    fill_in "Number", :with => "0234567891"
     fill_in "Password", :with => "pixiestix314"
     fill_in "Password confirmation", :with => ""
     attach_file('Avatar', 'public/test/fab.png')

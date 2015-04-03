@@ -12,6 +12,7 @@ describe "the create user function" do
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
+    fill_in "Number", :with => "1234567890"
     fill_in "Password", :with => "gumdrop123"
     fill_in "Password confirmation", :with => "gumdrop123"
     attach_file('Avatar', 'public/test/fab.png')
@@ -23,6 +24,7 @@ describe "the create user function" do
     visit root_path
     click_on "Register"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
+    fill_in "Number", :with => "1234567890"
     fill_in "Password", :with => "gumdrop123"
     fill_in "Password confirmation", :with => "gumdrop123"
     attach_file('Avatar', 'public/test/fab.png')
@@ -46,6 +48,7 @@ describe "the create user function" do
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
+    fill_in "Number", :with => "1234567890"
     fill_in "Password confirmation", :with => "gumdrop123"
     attach_file('Avatar', 'public/test/fab.png')
     click_on "Submit"
@@ -57,6 +60,7 @@ describe "the create user function" do
     click_on "Register"
     fill_in "Name", :with => "Dr. Lollipop"
     fill_in "Email", :with => "unicorn.phd@mystical.com"
+    fill_in "Number", :with => "1234567890"
     fill_in "Password", :with => "gumdrop123"
     attach_file('Avatar', 'public/test/fab.png')
     click_on "Submit"

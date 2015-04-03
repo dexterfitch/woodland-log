@@ -9,9 +9,11 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :email, :presence => true
+  validates :number, :presence => true
   validates :password, :presence => true
   validates :password_confirmation, :presence => true
   validates_uniqueness_of :email
+  validates_uniqueness_of :number
 
   has_attached_file :avatar, :styles => { :medium => "250x250>", :thumb => "100x100>" }, :default_url => "missing_image.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

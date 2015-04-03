@@ -10,7 +10,6 @@ describe "the delete comment function" do
     attach_file('Image', 'public/test/fab.png')
     click_on "Submit"
     click_on "Surgery is Hard with Hooves"
-    # save_and_open_page
     click_on "Add Comment"
     fill_in "Body", :with => "/tiny violin"
     click_on "Submit"

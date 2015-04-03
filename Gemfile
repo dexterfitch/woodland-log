@@ -16,6 +16,7 @@ gem 'bootstrap_form'
 gem 'font-awesome-sass'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'responders'
+gem 'rest-client'
 
 group :development do
   gem 'byebug'
@@ -35,6 +36,8 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do
